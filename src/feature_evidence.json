@@ -1,4 +1,73 @@
 {
   "kind": "feature_evidence_report",
-  "features": []
+  "features": [
+    {
+      "featureId": "feature-restyle-the-app-with-a-tiktok-like-visual-theme-and-format-while-keeping-the-existing-winner-verification-flow-unchanged-lookup-activation-eligibility-identity-upload-receipt-completion-the-new-look-should-be-predominantly-dark-high-contrast-and-modern-with-neon-accent-highlights-e-g-cyan-and-hot-pink-bold-display-typography-and-a-mobile-first-layout-aesthetic-reminiscent-of-tiktok-ui-patterns-clean-dark-surfaces-punchy-accent-ctas-subtle-glow-accents-tight-spacing-rounded-ui",
+      "featureTitle": "Restyle the app with a TikTok-like visual theme and format while keeping the existing winner verification flow unchanged (lookup → activation → eligibility → identity upload → receipt → completion). The new look should be predominantly dark, high-contrast, and modern, with neon accent highlights (e.g., cyan and hot pink), bold display typography, and a mobile-first layout aesthetic reminiscent of TikTok UI patterns (clean dark surfaces, punchy accent CTAs, subtle glow accents, tight spacing, rounded UI).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ActivationFlow.tsx",
+        "frontend/src/components/CompletionScreen.tsx",
+        "frontend/src/components/EligibilityFlow.tsx",
+        "frontend/src/components/IdentityVerification.tsx",
+        "frontend/src/components/PrizeLookup.tsx",
+        "frontend/src/components/ReceiptMethod.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-30"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-app-shell-header-footer-and-page-layout-to-better-match-a-tiktok-like-format-use-a-darker-header-footer-treatment-tighten-vertical-spacing-and-apply-subtle-neon-accent-cues-e-g-active-icon-color-highlights-thin-accent-dividers-or-soft-glow-shadows-while-preserving-existing-text-content-and-links",
+      "featureTitle": "Update the app shell (Header/Footer) and page layout to better match a TikTok-like format: use a darker header/footer treatment, tighten vertical spacing, and apply subtle neon accent cues (e.g., active icon/color highlights, thin accent dividers, or soft glow shadows) while preserving existing text content and links.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Header.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-31"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-existing-generated-brand-images-to-visually-match-the-tiktok-like-dark-neon-theme-and-update-the-ui-to-reference-the-updated-assets",
+      "featureTitle": "Update existing generated brand images to visually match the TikTok-like dark/neon theme and update the UI to reference the updated assets.",
+      "files": [
+        "frontend/src/components/ActivationFlow.tsx",
+        "frontend/src/components/CompletionScreen.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/IdentityVerification.tsx",
+        "frontend/src/components/PrizeLookup.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-32"
+      ],
+      "confidence": "high"
+    }
+  ]
 }

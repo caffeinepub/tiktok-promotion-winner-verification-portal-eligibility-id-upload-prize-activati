@@ -87,30 +87,32 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
 
   return (
     <div className="max-w-3xl mx-auto">
-      <Card className="shadow-lg">
-        <CardHeader className="text-center space-y-2">
-          <div className="flex justify-center mb-2">
+      <Card className="border-primary/20 shadow-glow-md bg-card/95 backdrop-blur">
+        <CardHeader className="text-center space-y-3 pb-4">
+          <div className="flex justify-center mb-1">
             <img 
-              src="/assets/generated/face-verify-icon.dim_150x150.png" 
+              src="/assets/generated/face-verify-icon-neon.dim_150x150.png" 
               alt="Identity Verification" 
-              className="h-16 w-16"
+              className="h-14 w-14 md:h-16 md:w-16"
             />
           </div>
-          <CardTitle className="text-2xl md:text-3xl">Identity Verification</CardTitle>
-          <CardDescription className="text-base">
+          <CardTitle className="text-xl md:text-2xl lg:text-3xl font-display font-bold tracking-tight">
+            Identity Verification
+          </CardTitle>
+          <CardDescription className="text-sm md:text-base text-muted-foreground">
             Upload your documents to verify your identity
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="p-4 bg-muted/50 rounded-lg">
-            <p className="text-sm">
+        <CardContent className="space-y-5">
+          <div className="p-3 md:p-4 bg-muted/30 border border-primary/10 rounded-lg">
+            <p className="text-xs md:text-sm">
               <span className="font-semibold">Prize Number:</span> {prizeData.prizeNumber}
             </p>
           </div>
 
-          <Alert>
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>
+          <Alert className="border-primary/40 bg-primary/5">
+            <AlertCircle className="h-4 w-4 text-primary" />
+            <AlertDescription className="text-xs md:text-sm">
               Please upload at least one form of identification. Both documents are recommended for faster processing.
             </AlertDescription>
           </Alert>
@@ -118,10 +120,10 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
           {/* Face Photo Upload */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <Camera className="h-5 w-5 text-primary" />
-              <Label className="text-base font-semibold">Face Photo</Label>
+              <Camera className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+              <Label className="text-sm md:text-base font-semibold">Face Photo</Label>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground">
               Upload a clear photo of your face. Ensure good lighting and that your face is clearly visible.
             </p>
             
@@ -130,28 +132,28 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
                 <img 
                   src={facePhotoPreview} 
                   alt="Face preview" 
-                  className="w-full h-64 object-cover rounded-lg border-2 border-border"
+                  className="w-full h-48 md:h-64 object-cover rounded-lg border-2 border-primary/30"
                 />
                 <Button
                   type="button"
                   variant="destructive"
                   size="icon"
-                  className="absolute top-2 right-2"
+                  className="absolute top-2 right-2 h-8 w-8"
                   onClick={() => removeFile('face')}
                 >
                   <X className="h-4 w-4" />
                 </Button>
-                <div className="absolute bottom-2 left-2 bg-background/90 px-3 py-1 rounded-full text-xs font-medium">
+                <div className="absolute bottom-2 left-2 bg-background/90 px-2 py-1 rounded-full text-xs font-medium">
                   {facePhoto?.name}
                 </div>
               </div>
             ) : (
               <div
                 onClick={() => facePhotoInputRef.current?.click()}
-                className="border-2 border-dashed border-border rounded-lg p-8 text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-colors"
+                className="border-2 border-dashed border-primary/30 rounded-lg p-6 md:p-8 text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-all"
               >
-                <Upload className="h-12 w-12 mx-auto mb-3 text-muted-foreground" />
-                <p className="text-sm font-medium mb-1">Click to upload face photo</p>
+                <Upload className="h-10 w-10 md:h-12 md:w-12 mx-auto mb-2 text-primary/70" />
+                <p className="text-xs md:text-sm font-medium mb-1">Click to upload face photo</p>
                 <p className="text-xs text-muted-foreground">PNG, JPG up to 5MB</p>
               </div>
             )}
@@ -167,10 +169,10 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
           {/* ID Card Upload */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <CreditCard className="h-5 w-5 text-primary" />
-              <Label className="text-base font-semibold">ID Card / Government ID</Label>
+              <CreditCard className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+              <Label className="text-sm md:text-base font-semibold">ID Card / Government ID</Label>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground">
               Upload a photo of your government-issued ID (passport, driver's license, national ID card).
             </p>
             
@@ -179,28 +181,28 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
                 <img 
                   src={idCardPreview} 
                   alt="ID card preview" 
-                  className="w-full h-64 object-cover rounded-lg border-2 border-border"
+                  className="w-full h-48 md:h-64 object-cover rounded-lg border-2 border-primary/30"
                 />
                 <Button
                   type="button"
                   variant="destructive"
                   size="icon"
-                  className="absolute top-2 right-2"
+                  className="absolute top-2 right-2 h-8 w-8"
                   onClick={() => removeFile('id')}
                 >
                   <X className="h-4 w-4" />
                 </Button>
-                <div className="absolute bottom-2 left-2 bg-background/90 px-3 py-1 rounded-full text-xs font-medium">
+                <div className="absolute bottom-2 left-2 bg-background/90 px-2 py-1 rounded-full text-xs font-medium">
                   {idCard?.name}
                 </div>
               </div>
             ) : (
               <div
                 onClick={() => idCardInputRef.current?.click()}
-                className="border-2 border-dashed border-border rounded-lg p-8 text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-colors"
+                className="border-2 border-dashed border-primary/30 rounded-lg p-6 md:p-8 text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-all"
               >
-                <Upload className="h-12 w-12 mx-auto mb-3 text-muted-foreground" />
-                <p className="text-sm font-medium mb-1">Click to upload ID card</p>
+                <Upload className="h-10 w-10 md:h-12 md:w-12 mx-auto mb-2 text-primary/70" />
+                <p className="text-xs md:text-sm font-medium mb-1">Click to upload ID card</p>
                 <p className="text-xs text-muted-foreground">PNG, JPG up to 5MB</p>
               </div>
             )}
@@ -214,16 +216,16 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
           </div>
 
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="border-destructive/50">
               <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{error}</AlertDescription>
+              <AlertDescription className="text-sm">{error}</AlertDescription>
             </Alert>
           )}
 
           {canSubmit && (
-            <Alert>
-              <CheckCircle className="h-4 w-4" />
-              <AlertDescription>
+            <Alert className="border-primary/40 bg-primary/5">
+              <CheckCircle className="h-4 w-4 text-primary" />
+              <AlertDescription className="text-xs md:text-sm">
                 Documents ready for submission. Your identity will be reviewed within 3-5 business days.
               </AlertDescription>
             </Alert>
@@ -231,7 +233,7 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
 
           <Button 
             onClick={handleSubmit}
-            className="w-full h-12 text-base font-semibold"
+            className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-sm hover:shadow-glow-md transition-all"
             disabled={!canSubmit}
           >
             {isSubmitting ? 'Submitting...' : 'Submit Identity Documents'}

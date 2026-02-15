@@ -1,19 +1,94 @@
 {
   "kind": "build_request",
-  "title": "Deploy the application",
+  "title": "Update UI to TikTok-like theme/style",
   "priority": "normal",
-  "requirements": [],
+  "requirements": [
+    {
+      "id": "REQ-30",
+      "text": "Restyle the app with a TikTok-like visual theme and format while keeping the existing winner verification flow unchanged (lookup → activation → eligibility → identity upload → receipt → completion). The new look should be predominantly dark, high-contrast, and modern, with neon accent highlights (e.g., cyan and hot pink), bold display typography, and a mobile-first layout aesthetic reminiscent of TikTok UI patterns (clean dark surfaces, punchy accent CTAs, subtle glow accents, tight spacing, rounded UI).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it look like TikTok theme format or style"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Global theme tokens in frontend/src/index.css are updated to a dark, TikTok-like palette (dark background/card, high-contrast foreground, neon accent primary/secondary) without breaking Tailwind/shadcn token usage.",
+        "All existing screens (PrizeLookup, ActivationFlow, EligibilityFlow, IdentityVerification, ReceiptMethod, CompletionScreen) visually match the new theme: buttons, alerts, cards, inputs, icons, borders, and muted text are consistent and readable on dark backgrounds.",
+        "The overall layout feels more mobile-first: content widths, spacing, and component sizing are adjusted to look good on small screens while remaining responsive on desktop.",
+        "No changes introduce new business logic or new steps in the flow; only presentation/styling/layout changes are made."
+      ]
+    },
+    {
+      "id": "REQ-31",
+      "text": "Update the app shell (Header/Footer) and page layout to better match a TikTok-like format: use a darker header/footer treatment, tighten vertical spacing, and apply subtle neon accent cues (e.g., active icon/color highlights, thin accent dividers, or soft glow shadows) while preserving existing text content and links.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it look like TikTok theme format or style"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Header (frontend/src/components/Header.tsx) and Footer (frontend/src/components/Footer.tsx) adopt the new dark/neon styling while keeping the same content, logo rendering, and the caffeine.ai attribution link intact.",
+        "App layout in frontend/src/App.tsx remains functional, but visually aligns with the new theme (background, container padding, and section spacing updated consistently)."
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "text": "Update existing generated brand images to visually match the TikTok-like dark/neon theme and update the UI to reference the updated assets.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Make it look like TikTok theme format or style"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Updated image assets are placed under frontend/public/assets/generated and referenced by the existing components that render them (e.g., Header and PrizeLookup).",
+        "All updated images remain crisp and legible on dark backgrounds and match the neon-accent style.",
+        "No images are served via the backend; all images are loaded as static assets from /assets/generated/ paths."
+      ]
+    }
+  ],
   "constraints": [
-    "Backend must remain a single Motoko actor (all logic in backend/main.mo when present).",
-    "Do not edit frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose instead).",
-    "Use English for any user-facing text."
+    "Do not edit files under frontend/src/components/ui (shadcn components must be composed/overridden via tokens and utility classes).",
+    "Do not edit immutable hook/bootstrapping paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
+    "Backend is out of scope for this request; do not add or change Motoko functionality."
   ],
   "nonGoals": [
-    "Adding new product features beyond fixing build/deploy blockers.",
-    "Introducing unsupported backend/frontend technologies or external databases/services."
+    "Adding new features (e.g., video feed, likes/comments UI, social interactions).",
+    "Changing the verification flow logic, statuses, or simulated/mock behaviors.",
+    "Introducing third-party assets or external UI libraries beyond what is already in the project."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": []
+    "edits": [
+      "Update to a TikTok-like dark/neon hero cover with high contrast and modern abstract accents (hero-cover.dim_1600x600.png > hero-cover-tiktok.dim_1600x600.png)",
+      "Update to a TikTok-like dark/neon logo mark (logo.dim_512x512.png > logo-tiktok.dim_512x512.png)",
+      "Update to a TikTok-like neon trophy icon on transparent background (trophy-icon-transparent.dim_200x200.png > trophy-icon-neon.dim_200x200.png)",
+      "Update to a TikTok-like neon face verification icon on transparent background (face-verify-icon.dim_150x150.png > face-verify-icon-neon.dim_150x150.png)",
+      "Update to a TikTok-like neon verification badge on transparent background (verification-badge.dim_100x100.png > verification-badge-neon.dim_100x100.png)",
+      "Update to a TikTok-like dark/neon celebration background with confetti/glow accents (celebration-bg.dim_1200x800.png > celebration-bg-tiktok.dim_1200x800.png)"
+    ]
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Prefer a TikTok-like dark UI theme with neon accent colors and a mobile-first layout aesthetic."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

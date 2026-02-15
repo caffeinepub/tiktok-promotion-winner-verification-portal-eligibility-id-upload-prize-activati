@@ -43,32 +43,34 @@ export default function PrizeLookup({ onSuccess }: PrizeLookupProps) {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="mb-8 md:mb-12">
+      <div className="mb-6 md:mb-8 overflow-hidden rounded-xl">
         <img 
-          src="/assets/generated/hero-cover.dim_1600x600.png" 
+          src="/assets/generated/hero-cover-tiktok.dim_1600x600.png" 
           alt="Winner Verification" 
-          className="w-full h-48 md:h-64 object-cover rounded-lg shadow-lg"
+          className="w-full h-40 md:h-56 object-cover"
         />
       </div>
 
-      <Card className="shadow-lg">
-        <CardHeader className="text-center space-y-2">
-          <div className="flex justify-center mb-2">
+      <Card className="border-primary/20 shadow-glow-md bg-card/95 backdrop-blur">
+        <CardHeader className="text-center space-y-3 pb-4">
+          <div className="flex justify-center mb-1">
             <img 
-              src="/assets/generated/trophy-icon-transparent.dim_200x200.png" 
+              src="/assets/generated/trophy-icon-neon.dim_200x200.png" 
               alt="Trophy" 
-              className="h-16 w-16 md:h-20 md:w-20"
+              className="h-14 w-14 md:h-16 md:w-16"
             />
           </div>
-          <CardTitle className="text-2xl md:text-3xl">Verify Your Winning</CardTitle>
-          <CardDescription className="text-base">
+          <CardTitle className="text-xl md:text-2xl lg:text-3xl font-display font-bold tracking-tight">
+            Verify Your Winning
+          </CardTitle>
+          <CardDescription className="text-sm md:text-base text-muted-foreground">
             Enter your prize number to begin the verification process
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <CardContent className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="prizeNumber" className="text-base font-medium">
+              <Label htmlFor="prizeNumber" className="text-sm md:text-base font-semibold">
                 Prize Number
               </Label>
               <Input
@@ -77,16 +79,16 @@ export default function PrizeLookup({ onSuccess }: PrizeLookupProps) {
                 placeholder="Enter your prize number (e.g., WIN-2026-12345)"
                 value={prizeNumber}
                 onChange={(e) => setPrizeNumber(e.target.value)}
-                className="h-12 text-base"
+                className="h-11 md:h-12 text-sm md:text-base bg-background/50 border-primary/30 focus:border-primary focus:ring-primary/50"
                 disabled={isLoading}
               />
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs md:text-sm text-muted-foreground">
                 Your prize number can be found in your winning notification
               </p>
             </div>
 
             {error && (
-              <Alert variant="destructive">
+              <Alert variant="destructive" className="border-destructive/50">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
@@ -94,27 +96,35 @@ export default function PrizeLookup({ onSuccess }: PrizeLookupProps) {
 
             <Button 
               type="submit" 
-              className="w-full h-12 text-base font-semibold"
+              className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-sm hover:shadow-glow-md transition-all"
               disabled={isLoading}
             >
               {isLoading ? (
                 <>Verifying...</>
               ) : (
                 <>
-                  <Search className="mr-2 h-5 w-5" />
+                  <Search className="mr-2 h-4 w-4 md:h-5 md:w-5" />
                   Verify Prize Number
                 </>
               )}
             </Button>
           </form>
 
-          <div className="mt-8 p-4 bg-muted/50 rounded-lg">
-            <h3 className="font-semibold mb-2 text-sm">What happens next?</h3>
-            <ul className="space-y-1.5 text-sm text-muted-foreground">
-              <li>• Activate your prize number</li>
-              <li>• Complete eligibility verification</li>
-              <li>• Submit identity documents</li>
-              <li>• Choose your prize delivery method</li>
+          <div className="mt-6 p-3 md:p-4 bg-muted/30 border border-primary/10 rounded-lg">
+            <h3 className="font-semibold mb-2 text-xs md:text-sm">What happens next?</h3>
+            <ul className="space-y-1 text-xs md:text-sm text-muted-foreground">
+              <li className="flex items-center gap-2">
+                <span className="text-primary">•</span> Activate your prize number
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-primary">•</span> Complete eligibility verification
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-primary">•</span> Submit identity documents
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-primary">•</span> Choose your prize delivery method
+              </li>
             </ul>
           </div>
         </CardContent>

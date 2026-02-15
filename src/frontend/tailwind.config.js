@@ -9,7 +9,7 @@ export default {
     theme: {
         container: {
             center: true,
-            padding: '2rem',
+            padding: '1rem',
             screens: {
                 '2xl': '1400px'
             }
@@ -73,11 +73,14 @@ export default {
                 sm: 'calc(var(--radius) - 4px)'
             },
             boxShadow: {
-                xs: '0 1px 2px 0 rgba(0,0,0,0.05)'
+                xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
+                'glow-sm': '0 0 10px oklch(var(--primary) / 0.2)',
+                'glow-md': '0 0 20px oklch(var(--primary) / 0.3)',
+                'glow-lg': '0 0 30px oklch(var(--primary) / 0.4)'
             },
             fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
-                display: ['Poppins', 'Inter', 'system-ui', 'sans-serif']
+                sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                display: ['Poppins', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
             },
             keyframes: {
                 'accordion-down': {
@@ -87,11 +90,16 @@ export default {
                 'accordion-up': {
                     from: { height: 'var(--radix-accordion-content-height)' },
                     to: { height: '0' }
+                },
+                'pulse-glow': {
+                    '0%, 100%': { boxShadow: '0 0 15px oklch(var(--primary) / 0.3)' },
+                    '50%': { boxShadow: '0 0 25px oklch(var(--primary) / 0.5)' }
                 }
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
-                'accordion-up': 'accordion-up 0.2s ease-out'
+                'accordion-up': 'accordion-up 0.2s ease-out',
+                'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
             }
         }
     },

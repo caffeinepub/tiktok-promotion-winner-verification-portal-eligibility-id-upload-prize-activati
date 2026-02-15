@@ -1,84 +1,33 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 11,
-  "summary": "Build an app for TikTok promotion winners to verify winnings, check eligibility, complete identity verification (face/ID upload), activate prize numbers, and select/confirm prize delivery/receipt method.",
-  "architectural_notes": [
-    "User confirmed a full rebuild from zero (new backend, new frontend, fresh deployment) to resolve repeated deployment failures due to missing/corrupted project files."
-  ],
-  "known_issues": [
-    "Deployment/build repeatedly failing (deployment error) and draft app expiration; user requests rebuild/finish deployment."
-  ],
-  "isFixRequest": true,
+  "projectStateVersion": 3,
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Edit Images\n- Update to a TikTok-like dark/neon hero cover with high contrast and modern abstract accents (hero-cover.dim_1600x600.png > hero-cover-tiktok.dim_1600x600.png)\n- Update to a TikTok-like dark/neon logo mark (logo.dim_512x512.png > logo-tiktok.dim_512x512.png)\n- Update to a TikTok-like neon trophy icon on transparent background (trophy-icon-transparent.dim_200x200.png > trophy-icon-neon.dim_200x200.png)\n- Update to a TikTok-like neon face verification icon on transparent background (face-verify-icon.dim_150x150.png > face-verify-icon-neon.dim_150x150.png)\n- Update to a TikTok-like neon verification badge on transparent background (verification-badge.dim_100x100.png > verification-badge-neon.dim_100x100.png)\n- Update to a TikTok-like dark/neon celebration background with confetti/glow accents (celebration-bg.dim_1200x800.png > celebration-bg-tiktok.dim_1200x800.png)",
   "existing_features": [
     {
-      "id": "feature-resolve-the-repeated-build-deployment-failures-and-successfully-deploy-the-application-so-it-compiles-and-runs-without-errors",
-      "title": "Resolve the repeated build/deployment failures and successfully deploy the application so it compiles and runs without errors.",
+      "id": "feature-restyle-the-app-with-a-tiktok-like-visual-theme-and-format-while-keeping-the-existing-winner-verification-flow-unchanged-lookup-activation-eligibility-identity-upload-receipt-completion-the-new-look-should-be-predominantly-dark-high-contrast-and-modern-with-neon-accent-highlights-e-g-cyan-and-hot-pink-bold-display-typography-and-a-mobile-first-layout-aesthetic-reminiscent-of-tiktok-ui-patterns-clean-dark-surfaces-punchy-accent-ctas-subtle-glow-accents-tight-spacing-rounded-ui",
+      "title": "Restyle the app with a TikTok-like visual theme and format while keeping the existing winner verification flow unchanged (lookup → activation → eligibility → identity upload → receipt → completion). The new look should be predominantly dark, high-contrast, and modern, with neon accent highlights (e.g., cyan and hot pink), bold display typography, and a mobile-first layout aesthetic reminiscent of TikTok UI patterns (clean dark surfaces, punchy accent CTAs, subtle glow accents, tight spacing, rounded UI).",
       "reqIds": [
-        "REQ-19"
+        "REQ-30"
       ],
       "version": 1
     },
     {
-      "id": "feature-create-a-public-winner-portal-flow-in-the-frontend-where-a-user-enters-a-winning-prize-number-and-sees-whether-it-is-valid-the-associated-prize-details-and-the-current-claim-status-e-g-not-found-valid-pending-id-review-eligible-ineligible-claimed",
-      "title": "Create a public winner portal flow in the frontend where a user enters a winning prize number and sees whether it is valid, the associated prize details, and the current claim status (e.g., Not Found, Valid, Pending ID Review, Eligible, Ineligible, Claimed).",
+      "id": "feature-update-the-app-shell-header-footer-and-page-layout-to-better-match-a-tiktok-like-format-use-a-darker-header-footer-treatment-tighten-vertical-spacing-and-apply-subtle-neon-accent-cues-e-g-active-icon-color-highlights-thin-accent-dividers-or-soft-glow-shadows-while-preserving-existing-text-content-and-links",
+      "title": "Update the app shell (Header/Footer) and page layout to better match a TikTok-like format: use a darker header/footer treatment, tighten vertical spacing, and apply subtle neon accent cues (e.g., active icon/color highlights, thin accent dividers, or soft glow shadows) while preserving existing text content and links.",
       "reqIds": [
-        "REQ-21"
+        "REQ-31"
       ],
       "version": 1
     },
     {
-      "id": "feature-implement-prize-number-activation-allow-the-winner-to-activate-their-winning-prize-number-exactly-once-prevent-activation-if-the-prize-number-is-invalid-already-activated-or-already-claimed",
-      "title": "Implement prize number activation: allow the winner to activate their winning prize number exactly once; prevent activation if the prize number is invalid, already activated, or already claimed.",
+      "id": "feature-update-existing-generated-brand-images-to-visually-match-the-tiktok-like-dark-neon-theme-and-update-the-ui-to-reference-the-updated-assets",
+      "title": "Update existing generated brand images to visually match the TikTok-like dark/neon theme and update the UI to reference the updated assets.",
       "reqIds": [
-        "REQ-22"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-an-eligibility-check-flow-for-a-validated-activated-prize-number-display-the-eligibility-requirements-text-record-the-winner-s-responses-attestation-and-persist-the-resulting-eligible-or-ineligible-status-tied-to-the-prize-number",
-      "title": "Implement an eligibility check flow for a validated/activated prize number: display the eligibility requirements text, record the winner’s responses/attestation, and persist the resulting Eligible or Ineligible status tied to the prize number.",
-      "reqIds": [
-        "REQ-23"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-an-identity-verification-workflow-for-eligible-winners-that-allows-uploading-either-a-face-photo-or-an-id-card-image-or-both-stores-the-uploads-tied-to-the-prize-number-and-tracks-a-review-status-not-submitted-submitted-approved-rejected",
-      "title": "Add an identity verification workflow for eligible winners that allows uploading either a face photo or an ID card image (or both), stores the uploads tied to the prize number, and tracks a review status (Not Submitted, Submitted, Approved, Rejected).",
-      "reqIds": [
-        "REQ-24"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-prize-receipt-method-selection-confirmation-for-eligible-winners-after-identity-submission-including-capturing-and-storing-the-required-information-for-the-chosen-method-e-g-shipping-address-for-physical-prizes-and-contact-info-for-digital-delivery",
-      "title": "Implement prize receipt method selection/confirmation for eligible winners after identity submission, including capturing and storing the required information for the chosen method (e.g., shipping address for physical prizes and contact info for digital delivery).",
-      "reqIds": [
-        "REQ-25"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-design-and-implement-a-cohesive-trustworthy-verification-oriented-ui-theme-colors-typography-layout-and-components-and-apply-it-consistently-across-prize-lookup-activation-eligibility-identity-upload-and-receipt-method-screens",
-      "title": "Design and implement a cohesive, trustworthy, verification-oriented UI theme (colors, typography, layout, and components) and apply it consistently across prize lookup, activation, eligibility, identity upload, and receipt method screens.",
-      "reqIds": [
-        "REQ-27"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-generated-static-brand-assets-logo-and-a-lightweight-hero-cover-visual-under-frontend-public-assets-generated-and-render-them-in-the-app-shell-e-g-header-and-landing-lookup-page",
-      "title": "Add generated static brand assets (logo and a lightweight hero/cover visual) under frontend/public/assets/generated and render them in the app shell (e.g., header) and landing/lookup page.",
-      "reqIds": [
-        "REQ-28"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-fully-rebuild-the-application-from-zero-regenerate-a-fresh-react-typescript-frontend-and-motoko-backend-from-the-injected-template-and-produce-a-successful-deployment-that-compiles-and-runs-without-errors",
-      "title": "Fully rebuild the application from zero (regenerate a fresh React+TypeScript frontend and Motoko backend from the injected template) and produce a successful deployment that compiles and runs without errors.",
-      "reqIds": [
-        "REQ-29"
+        "REQ-32"
       ],
       "version": 1
     }
@@ -86,197 +35,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Winner portal to verify TikTok promotion winnings and view prize details",
+      "summary": "Update the app UI to match a TikTok-like theme/format/style.",
       "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Eligibility checking flow for winners (confirm they meet promotion requirements)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Identity verification workflow with upload of face photo and/or ID card",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Prize number activation feature (enter/activate winning prize number)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Prize receipt method selection/confirmation (how winner will receive the prize)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Create a public-facing winner portal that lets a user enter a winning prize number and view whether the prize number is valid, the associated prize details, and the current verification/claim status (e.g., Not Found, Valid, Pending ID Review, Eligible, Ineligible, Claimed).",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-7",
-      "summary": "Implement an eligibility check flow for a validated prize number that displays eligibility requirements and records the winner’s responses/attestation needed to proceed (resulting in an Eligible or Ineligible state).",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-8",
-      "summary": "Add an identity verification workflow for eligible winners that allows uploading either a face photo or an ID card image (or both) and stores the uploads and a review status tied to the prize number.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-9",
-      "summary": "Implement prize receipt method selection for eligible winners (after identity submission) including capturing the required information for the chosen method and storing it with the claim (e.g., shipping address for physical prizes or contact info for digital delivery).",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-10",
-      "summary": "Add a prize number activation step that allows the winner to activate their winning prize number (one-time activation) and prevents activation if the prize number is invalid or already activated/claimed.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-11",
-      "summary": "Create backend data models and APIs to support: (1) prize records keyed by prize number, (2) activation state, (3) eligibility responses + status, (4) identity uploads + review status, and (5) prize receipt method details; data must persist across canister upgrades using stable storage patterns.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-12",
-      "summary": "Provide a minimal administrative capability to register/import winner prize records (prize number, prize description, and any eligibility requirement text) so the system has a source of truth for valid winners; this must not be accessible from the public UI.",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-13",
-      "summary": "Design and implement a cohesive UI theme for the app (colors, typography, layout, and components) that feels trustworthy and verification-oriented, and apply it consistently across the prize lookup, eligibility, identity upload, activation, and receipt method screens.",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-14",
-      "summary": "Add generated static brand assets (logo + lightweight hero/cover visual) to the frontend and render them in the app shell (e.g., header and landing/lookup page) using files stored under frontend/public/assets/generated.",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-15",
-      "summary": "Create a public winner portal flow where a user can enter a winning prize number and see whether it is valid, the associated prize details, and the current claim status (e.g., Not Found, Valid, Pending ID Review, Eligible, Ineligible, Claimed).",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-16",
-      "summary": "Implement a prize number activation step that allows a winner to activate their winning prize number exactly once, and prevents activation when the prize number is invalid or already activated/claimed.",
-      "reqIds": [
-        "REQ-11"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-17",
-      "summary": "Implement an eligibility check flow for a validated/activated prize number that displays eligibility requirements and records the winner’s responses/attestation; the flow must result in a stored status of Eligible or Ineligible tied to the prize number.",
-      "reqIds": [
-        "REQ-12"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-18",
-      "summary": "Add an identity verification workflow for eligible winners that allows uploading either a face photo or an ID card image (or both), stores the uploads tied to the prize number, and tracks a review status (e.g., Not Submitted, Submitted, Approved, Rejected).",
-      "reqIds": [
-        "REQ-13"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-19",
-      "summary": "Implement prize receipt method selection/confirmation for eligible winners after identity submission, including capturing and storing the required information for the chosen method (e.g., shipping address for physical prizes and/or contact info for digital delivery).",
-      "reqIds": [
-        "REQ-14"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-20",
-      "summary": "Create backend data models and APIs to support prize records keyed by prize number, activation state, eligibility responses + status, identity uploads + review status, and prize receipt method details, with data persisting across canister upgrades using stable storage patterns.",
-      "reqIds": [
-        "REQ-15"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-21",
-      "summary": "Provide a minimal administrative capability to register/import winner prize records (prize number, prize description, and any eligibility requirement text) so the system has a source of truth for valid winners; this must not be accessible from the public UI.",
-      "reqIds": [
-        "REQ-16"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-22",
-      "summary": "Design and implement a cohesive, trustworthy, verification-oriented UI theme (colors, typography, layout, and components) and apply it consistently across prize lookup, activation, eligibility, identity upload, and receipt method screens.",
-      "reqIds": [
-        "REQ-17"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-23",
-      "summary": "Add generated static brand assets (logo and a lightweight hero/cover visual) under frontend/public/assets/generated and render them in the app shell (e.g., header) and landing/lookup page.",
-      "reqIds": [
-        "REQ-18"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-25",
-      "summary": "Implement backend persistent data models and APIs for: (1) prize records keyed by prize number, (2) one-time activation state, (3) eligibility requirements + winner responses + eligibility status, (4) identity uploads metadata + review status, and (5) prize receipt method details; data must persist across canister upgrades using stable storage patterns.",
-      "reqIds": [
-        "REQ-20"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-31",
-      "summary": "Provide a minimal administrative capability to register/import winner prize records (prize number, prize description, and any eligibility requirement text) so the system has a source of truth for valid winners; this must not be accessible from the public UI.",
-      "reqIds": [
-        "REQ-26"
-      ],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "TikTok Promotion Winner Verification Portal (eligibility, ID upload, prize activation)",
+  "projectName": "Update UI to TikTok-like theme/style",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

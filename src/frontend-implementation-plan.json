@@ -1,6 +1,155 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Deploy the application",
-  "requirements": []
+  "title": "TikTok-like dark/neon restyle (UI-only) for winner verification flow",
+  "requirements": [
+    {
+      "id": "REQ-30",
+      "summary": "Apply a TikTok-like dark, high-contrast, neon-accent, mobile-first visual theme across the existing verification flow without changing flow logic.",
+      "acceptanceCriteria": [
+        "Global theme tokens in frontend/src/index.css are updated to a dark, TikTok-like palette (dark background/card, high-contrast foreground, neon accent primary/secondary) without breaking Tailwind/shadcn token usage.",
+        "All existing screens (PrizeLookup, ActivationFlow, EligibilityFlow, IdentityVerification, ReceiptMethod, CompletionScreen) visually match the new theme: buttons, alerts, cards, inputs, icons, borders, and muted text are consistent and readable on dark backgrounds.",
+        "The overall layout feels more mobile-first: content widths, spacing, and component sizing are adjusted to look good on small screens while remaining responsive on desktop.",
+        "No changes introduce new business logic or new steps in the flow; only presentation/styling/layout changes are made."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update shadcn/Tailwind CSS variables (background/card/foreground/muted/border/input/ring/primary/secondary/accent) to a predominantly dark, high-contrast palette with neon accents (cyan + hot pink) and subtle glow-friendly ring values; optionally add small utility classes (e.g., glow shadow helpers) in Tailwind layers to support consistent TikTok-like styling without editing shadcn ui components."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Tighten main layout spacing for a mobile-first feel (smaller default vertical padding, better small-screen spacing) while keeping the existing step transition logic and component rendering order unchanged."
+        },
+        {
+          "path": "frontend/src/components/PrizeLookup.tsx",
+          "operation": "modify",
+          "description": "Adjust presentation only: apply dark-surface + neon accent CTA styling via utility classes (no logic changes), refine spacing/typography for mobile-first (tighter gaps, bold display typography), and ensure card/hero presentation reads well on dark backgrounds."
+        },
+        {
+          "path": "frontend/src/components/ActivationFlow.tsx",
+          "operation": "modify",
+          "description": "Adjust presentation only: refine card/alert sections and call-to-action emphasis to match the dark/neon theme (glow accents, higher contrast borders, tighter spacing) while preserving all existing activation flow behavior."
+        },
+        {
+          "path": "frontend/src/components/EligibilityFlow.tsx",
+          "operation": "modify",
+          "description": "Adjust presentation only: update checklist item containers (borders/hover states), headings, and button emphasis for dark/neon readability and a TikTok-like compact mobile layout; do not change requirement text or eligibility logic."
+        },
+        {
+          "path": "frontend/src/components/IdentityVerification.tsx",
+          "operation": "modify",
+          "description": "Adjust presentation only: update upload dropzones/previews/buttons to dark-surface styling with neon focus/hover states and subtle glow cues; keep all validation and submission behavior unchanged."
+        },
+        {
+          "path": "frontend/src/components/ReceiptMethod.tsx",
+          "operation": "modify",
+          "description": "Adjust presentation only: restyle radio cards, form fields, and section spacing for mobile-first dark/neon consistency; preserve existing validation and submission behavior."
+        },
+        {
+          "path": "frontend/src/components/CompletionScreen.tsx",
+          "operation": "modify",
+          "description": "Adjust presentation only: ensure status visuals (ineligible/under review/claimed) render with consistent dark/neon styling, readable text colors, and modern spacing; do not change completion logic."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Refine Tailwind theme extensions (e.g., ensure display typography is available/used consistently and support any needed theme-level shadow/animation tokens) to reinforce the TikTok-like look while still relying on existing shadcn token variables."
+        }
+      ]
+    },
+    {
+      "id": "REQ-31",
+      "summary": "Restyle the app shell (Header/Footer) and overall page layout to a darker TikTok-like format with subtle neon accent cues while preserving existing content and links.",
+      "acceptanceCriteria": [
+        "Header (frontend/src/components/Header.tsx) and Footer (frontend/src/components/Footer.tsx) adopt the new dark/neon styling while keeping the same content, logo rendering, and the caffeine.ai attribution link intact.",
+        "App layout in frontend/src/App.tsx remains functional, but visually aligns with the new theme (background, container padding, and section spacing updated consistently)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update header styling to a darker TikTok-like treatment (high-contrast surface, thin accent divider, subtle neon highlight/glow on active brand/icon) while preserving the same text content, logo rendering, and overall structure. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update footer styling to match the dark/neon theme (muted text on dark surface, subtle accent divider, refined spacing) while keeping the copyright text and caffeine.ai attribution link intact and unchanged. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Align app shell background/container spacing with the updated header/footer styling (mobile-first padding and section spacing), without changing the verification flow steps or behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-32",
+      "summary": "Replace existing generated brand images with TikTok-like dark/neon versions and update the UI to reference the updated static assets.",
+      "acceptanceCriteria": [
+        "Updated image assets are placed under frontend/public/assets/generated and referenced by the existing components that render them (e.g., Header and PrizeLookup).",
+        "All updated images remain crisp and legible on dark backgrounds and match the neon-accent style.",
+        "No images are served via the backend; all images are loaded as static assets from /assets/generated/ paths."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png",
+          "operation": "create",
+          "description": "Add updated TikTok-like dark/neon hero cover image as a static asset at frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/logo-tiktok.dim_512x512.png",
+          "operation": "create",
+          "description": "Add updated TikTok-like dark/neon logo mark as a static asset at frontend/public/assets/generated/logo-tiktok.dim_512x512.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png",
+          "operation": "create",
+          "description": "Add updated TikTok-like neon trophy icon (transparent background) as a static asset at frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png",
+          "operation": "create",
+          "description": "Add updated TikTok-like neon face verification icon (transparent background) as a static asset at frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/verification-badge-neon.dim_100x100.png",
+          "operation": "create",
+          "description": "Add updated TikTok-like neon verification badge (transparent background) as a static asset at frontend/public/assets/generated/verification-badge-neon.dim_100x100.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add updated TikTok-like dark/neon celebration background with confetti/glow accents as a static asset at frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update the header to reference the new logo asset at frontend/public/assets/generated/logo-tiktok.dim_512x512.png (static asset usage only). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/PrizeLookup.tsx",
+          "operation": "modify",
+          "description": "Update PrizeLookup to reference frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png and frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ActivationFlow.tsx",
+          "operation": "modify",
+          "description": "Update ActivationFlow to reference frontend/public/assets/generated/verification-badge-neon.dim_100x100.png. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/IdentityVerification.tsx",
+          "operation": "modify",
+          "description": "Update IdentityVerification to reference frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/CompletionScreen.tsx",
+          "operation": "modify",
+          "description": "Update CompletionScreen to reference frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png for the claimed state. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
 }

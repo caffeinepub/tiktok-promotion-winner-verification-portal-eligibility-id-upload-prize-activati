@@ -54,41 +54,43 @@ export default function EligibilityFlow({ prizeData, onComplete }: EligibilityFl
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Card className="shadow-lg">
-        <CardHeader className="text-center space-y-2">
-          <CardTitle className="text-2xl md:text-3xl">Eligibility Verification</CardTitle>
-          <CardDescription className="text-base">
+      <Card className="border-primary/20 shadow-glow-md bg-card/95 backdrop-blur">
+        <CardHeader className="text-center space-y-3 pb-4">
+          <CardTitle className="text-xl md:text-2xl lg:text-3xl font-display font-bold tracking-tight">
+            Eligibility Verification
+          </CardTitle>
+          <CardDescription className="text-sm md:text-base text-muted-foreground">
             Please confirm you meet all requirements to claim your prize
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="p-4 bg-muted/50 rounded-lg">
-            <p className="text-sm">
+        <CardContent className="space-y-5">
+          <div className="p-3 md:p-4 bg-muted/30 border border-primary/10 rounded-lg">
+            <p className="text-xs md:text-sm">
               <span className="font-semibold">Prize Number:</span> {prizeData.prizeNumber}
             </p>
-            <p className="text-sm mt-1">
+            <p className="text-xs md:text-sm mt-1">
               <span className="font-semibold">Prize:</span> {prizeData.description}
             </p>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="font-semibold text-lg">Eligibility Requirements</h3>
-            <p className="text-sm text-muted-foreground">
+          <div className="space-y-3">
+            <h3 className="font-semibold text-base md:text-lg">Eligibility Requirements</h3>
+            <p className="text-xs md:text-sm text-muted-foreground">
               Please read and confirm each requirement below:
             </p>
             
-            <div className="space-y-4">
+            <div className="space-y-3">
               {eligibilityRequirements.map((requirement, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 rounded-lg border border-border hover:bg-muted/30 transition-colors">
+                <div key={index} className="flex items-start gap-3 p-3 rounded-lg border border-primary/20 hover:bg-primary/5 hover:border-primary/40 transition-all">
                   <Checkbox
                     id={`requirement-${index}`}
                     checked={checkedItems[index]}
                     onCheckedChange={(checked) => handleCheckChange(index, checked as boolean)}
-                    className="mt-0.5"
+                    className="mt-0.5 border-primary/50 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                   />
                   <Label
                     htmlFor={`requirement-${index}`}
-                    className="text-sm leading-relaxed cursor-pointer flex-1"
+                    className="text-xs md:text-sm leading-relaxed cursor-pointer flex-1"
                   >
                     {requirement}
                   </Label>
@@ -98,16 +100,16 @@ export default function EligibilityFlow({ prizeData, onComplete }: EligibilityFl
           </div>
 
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="border-destructive/50">
               <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{error}</AlertDescription>
+              <AlertDescription className="text-sm">{error}</AlertDescription>
             </Alert>
           )}
 
           {allChecked && (
-            <Alert>
-              <CheckCircle className="h-4 w-4" />
-              <AlertDescription>
+            <Alert className="border-primary/40 bg-primary/5">
+              <CheckCircle className="h-4 w-4 text-primary" />
+              <AlertDescription className="text-sm">
                 All requirements confirmed. You may proceed to identity verification.
               </AlertDescription>
             </Alert>
@@ -115,7 +117,7 @@ export default function EligibilityFlow({ prizeData, onComplete }: EligibilityFl
 
           <Button 
             onClick={handleSubmit}
-            className="w-full h-12 text-base font-semibold"
+            className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-sm hover:shadow-glow-md transition-all"
             disabled={!allChecked || isSubmitting}
           >
             {isSubmitting ? 'Submitting...' : 'Confirm Eligibility'}

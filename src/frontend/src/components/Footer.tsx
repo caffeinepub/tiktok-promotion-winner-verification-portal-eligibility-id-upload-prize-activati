@@ -7,14 +7,14 @@ export default function Footer() {
     : 'unknown-app';
 
   return (
-    <footer className="border-t border-border bg-card mt-auto">
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+    <footer className="border-t border-primary/20 bg-card/80 backdrop-blur-sm mt-auto">
+      <div className="container mx-auto px-3 py-4 md:py-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm text-muted-foreground">
           <p className="text-center md:text-left">
             © {currentYear} Winner Verification Portal. All rights reserved.
           </p>
           <p className="flex items-center gap-1.5">
-            Built with <Heart className="h-4 w-4 text-destructive fill-destructive" /> using{' '}
+            Built with <Heart className="h-3 w-3 md:h-4 md:w-4 text-secondary fill-secondary" /> using{' '}
             <a
               href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appIdentifier}`}
               target="_blank"

@@ -75,7 +75,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      <main className="flex-1 container mx-auto px-4 py-8 md:py-12">
+      <main className="flex-1 container mx-auto px-3 py-4 md:py-6">
         {currentStep === 'lookup' && <PrizeLookup onSuccess={handlePrizeLookup} />}
         {currentStep === 'activation' && prizeData && (
           <ActivationFlow prizeData={prizeData} onActivate={handleActivation} />
