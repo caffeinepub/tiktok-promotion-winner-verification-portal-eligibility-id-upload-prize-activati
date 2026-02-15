@@ -1,33 +1,49 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
+  "summary": "Rebrand/update the app into a \"Prize Portal\" experience (previously TikTok-style).",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Edit Images\n- Update to a TikTok-like dark/neon hero cover with high contrast and modern abstract accents (hero-cover.dim_1600x600.png > hero-cover-tiktok.dim_1600x600.png)\n- Update to a TikTok-like dark/neon logo mark (logo.dim_512x512.png > logo-tiktok.dim_512x512.png)\n- Update to a TikTok-like neon trophy icon on transparent background (trophy-icon-transparent.dim_200x200.png > trophy-icon-neon.dim_200x200.png)\n- Update to a TikTok-like neon face verification icon on transparent background (face-verify-icon.dim_150x150.png > face-verify-icon-neon.dim_150x150.png)\n- Update to a TikTok-like neon verification badge on transparent background (verification-badge.dim_100x100.png > verification-badge-neon.dim_100x100.png)\n- Update to a TikTok-like dark/neon celebration background with confetti/glow accents (celebration-bg.dim_1200x800.png > celebration-bg-tiktok.dim_1200x800.png)",
+  "imageRequirements": "## Required Images\n- Prize Portal logo mark, clean vector-like style on transparent background (logo-prize-portal.dim_512x512.png)\n- Trophy icon, premium/gold style on transparent background (trophy-icon-prize.dim_200x200.png)\n- Hero cover image, prize portal themed abstract/premium background (hero-cover-prize-portal.dim_1600x600.png)\n- Verification badge icon, premium style on transparent background (verification-badge-prize.dim_100x100.png)\n- Face/ID verification icon, premium style on transparent background (face-verify-icon-prize.dim_150x150.png)\n- Celebration background, premium confetti/spotlight style (celebration-bg-prize.dim_1200x800.png)\n\n## Edit Images\n- Update to Prize Portal logo styling (logo-tiktok.dim_512x512.png > logo-prize-portal.dim_512x512.png)\n- Update to Prize Portal hero cover styling (hero-cover-tiktok.dim_1600x600.png > hero-cover-prize-portal.dim_1600x600.png)\n- Update to premium Prize Portal trophy icon styling (trophy-icon-neon.dim_200x200.png > trophy-icon-prize.dim_200x200.png)\n- Update to premium Prize Portal face verification icon styling (face-verify-icon-neon.dim_150x150.png > face-verify-icon-prize.dim_150x150.png)\n- Update to premium Prize Portal verification badge styling (verification-badge-neon.dim_100x100.png > verification-badge-prize.dim_100x100.png)\n- Update to Prize Portal celebration background styling (celebration-bg-tiktok.dim_1200x800.png > celebration-bg-prize.dim_1200x800.png)",
   "existing_features": [
     {
-      "id": "feature-restyle-the-app-with-a-tiktok-like-visual-theme-and-format-while-keeping-the-existing-winner-verification-flow-unchanged-lookup-activation-eligibility-identity-upload-receipt-completion-the-new-look-should-be-predominantly-dark-high-contrast-and-modern-with-neon-accent-highlights-e-g-cyan-and-hot-pink-bold-display-typography-and-a-mobile-first-layout-aesthetic-reminiscent-of-tiktok-ui-patterns-clean-dark-surfaces-punchy-accent-ctas-subtle-glow-accents-tight-spacing-rounded-ui",
-      "title": "Restyle the app with a TikTok-like visual theme and format while keeping the existing winner verification flow unchanged (lookup → activation → eligibility → identity upload → receipt → completion). The new look should be predominantly dark, high-contrast, and modern, with neon accent highlights (e.g., cyan and hot pink), bold display typography, and a mobile-first layout aesthetic reminiscent of TikTok UI patterns (clean dark surfaces, punchy accent CTAs, subtle glow accents, tight spacing, rounded UI).",
+      "id": "feature-rebrand-the-ui-from-the-current-tiktok-neon-styling-to-a-cohesive-prize-portal-brand-across-all-screens-while-keeping-the-existing-flow-unchanged-lookup-activation-eligibility-identity-upload-receipt-completion",
+      "title": "Rebrand the UI from the current TikTok/neon styling to a cohesive “Prize Portal” brand across all screens while keeping the existing flow unchanged (lookup → activation → eligibility → identity upload → receipt → completion).",
       "reqIds": [
-        "REQ-30"
+        "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-the-app-shell-header-footer-and-page-layout-to-better-match-a-tiktok-like-format-use-a-darker-header-footer-treatment-tighten-vertical-spacing-and-apply-subtle-neon-accent-cues-e-g-active-icon-color-highlights-thin-accent-dividers-or-soft-glow-shadows-while-preserving-existing-text-content-and-links",
-      "title": "Update the app shell (Header/Footer) and page layout to better match a TikTok-like format: use a darker header/footer treatment, tighten vertical spacing, and apply subtle neon accent cues (e.g., active icon/color highlights, thin accent dividers, or soft glow shadows) while preserving existing text content and links.",
+      "id": "feature-update-user-facing-text-to-use-prize-portal-branding-e-g-header-title-footer-copyright-line-hero-alt-text-button-step-labels-where-appropriate-and-ensure-all-user-facing-text-is-in-english",
+      "title": "Update user-facing text to use “Prize Portal” branding (e.g., header title, footer copyright line, hero/alt text, button/step labels where appropriate) and ensure all user-facing text is in English.",
       "reqIds": [
-        "REQ-31"
+        "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-existing-generated-brand-images-to-visually-match-the-tiktok-like-dark-neon-theme-and-update-the-ui-to-reference-the-updated-assets",
-      "title": "Update existing generated brand images to visually match the TikTok-like dark/neon theme and update the UI to reference the updated assets.",
+      "id": "feature-replace-tiktok-themed-generated-image-references-in-the-ui-with-prize-portal-branded-generated-assets-and-ensure-the-app-loads-the-new-assets-from-frontend-public-assets-generated",
+      "title": "Replace TikTok-themed generated image references in the UI with Prize Portal-branded generated assets, and ensure the app loads the new assets from frontend/public/assets/generated.",
       "reqIds": [
-        "REQ-32"
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-define-and-apply-a-distinct-visual-theme-for-prize-portal-colors-typography-surfaces-and-component-styling-that-is-consistent-across-the-app-and-is-not-tiktok-like-neon-avoid-a-blue-purple-primary-palette",
+      "title": "Define and apply a distinct visual theme for Prize Portal (colors, typography, surfaces, and component styling) that is consistent across the app and is not TikTok-like/neon. Avoid a blue/purple primary palette.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-replace-promotion-specific-eligibility-copy-that-references-tiktok-so-the-eligibility-checklist-is-generic-to-a-prize-portal-without-changing-the-checklist-interaction-behavior",
+      "title": "Remove/replace promotion-specific eligibility copy that references TikTok so the eligibility checklist is generic to a Prize Portal (without changing the checklist interaction behavior).",
+      "reqIds": [
+        "REQ-5"
       ],
       "version": 1
     }
@@ -35,12 +51,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Update the app UI to match a TikTok-like theme/format/style.",
+      "summary": "Rebrand/convert the current app into \"Prize Portal\" (rename and update overall experience accordingly).",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Update UI to TikTok-like theme/style",
+  "projectName": "Prize Portal",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

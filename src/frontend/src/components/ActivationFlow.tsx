@@ -27,11 +27,11 @@ export default function ActivationFlow({ prizeData, onActivate }: ActivationFlow
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Card className="border-primary/20 shadow-glow-md bg-card/95 backdrop-blur">
+      <Card className="border-border shadow-premium-md bg-card">
         <CardHeader className="text-center space-y-3 pb-4">
           <div className="flex justify-center mb-1">
             <img 
-              src="/assets/generated/verification-badge-neon.dim_100x100.png" 
+              src="/assets/generated/verification-badge-prize.dim_100x100.png" 
               alt="Verification Badge" 
               className="h-14 w-14 md:h-16 md:w-16"
             />
@@ -87,7 +87,7 @@ export default function ActivationFlow({ prizeData, onActivate }: ActivationFlow
 
           <Button 
             onClick={handleActivate}
-            className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-sm hover:shadow-glow-md transition-all"
+            className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-premium-sm hover:shadow-premium-md transition-all"
             disabled={isActivating}
           >
             {isActivating ? 'Activating...' : 'Activate Prize Number'}

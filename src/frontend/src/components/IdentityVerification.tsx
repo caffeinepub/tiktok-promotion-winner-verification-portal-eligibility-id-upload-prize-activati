@@ -41,21 +41,22 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
       return;
     }
 
+    setError('');
     const reader = new FileReader();
     reader.onloadend = () => {
+      const preview = reader.result as string;
       if (type === 'face') {
         setFacePhoto(file);
-        setFacePhotoPreview(reader.result as string);
+        setFacePhotoPreview(preview);
       } else {
         setIdCard(file);
-        setIdCardPreview(reader.result as string);
+        setIdCardPreview(preview);
       }
-      setError('');
     };
     reader.readAsDataURL(file);
   };
 
-  const removeFile = (type: 'face' | 'id') => {
+  const handleRemove = (type: 'face' | 'id') => {
     if (type === 'face') {
       setFacePhoto(null);
       setFacePhotoPreview('');
@@ -68,8 +69,8 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
   };
 
   const handleSubmit = async () => {
-    if (!facePhoto && !idCard) {
-      setError('Please upload at least one document (face photo or ID card)');
+    if (!facePhoto || !idCard) {
+      setError('Please upload both required documents');
       return;
     }
 
@@ -83,15 +84,15 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
     }, 2000);
   };
 
-  const canSubmit = (facePhoto || idCard) && !isSubmitting;
+  const canSubmit = facePhoto && idCard;
 
   return (
     <div className="max-w-3xl mx-auto">
-      <Card className="border-primary/20 shadow-glow-md bg-card/95 backdrop-blur">
+      <Card className="border-border shadow-premium-md bg-card">
         <CardHeader className="text-center space-y-3 pb-4">
           <div className="flex justify-center mb-1">
             <img 
-              src="/assets/generated/face-verify-icon-neon.dim_150x150.png" 
+              src="/assets/generated/face-verify-icon-prize.dim_150x150.png" 
               alt="Identity Verification" 
               className="h-14 w-14 md:h-16 md:w-16"
             />
@@ -104,139 +105,142 @@ export default function IdentityVerification({ prizeData, onSubmit }: IdentityVe
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-5">
-          <div className="p-3 md:p-4 bg-muted/30 border border-primary/10 rounded-lg">
+          <div className="p-3 md:p-4 bg-muted/50 border border-border rounded-lg">
             <p className="text-xs md:text-sm">
               <span className="font-semibold">Prize Number:</span> {prizeData.prizeNumber}
             </p>
           </div>
 
           <Alert className="border-primary/40 bg-primary/5">
-            <AlertCircle className="h-4 w-4 text-primary" />
-            <AlertDescription className="text-xs md:text-sm">
-              Please upload at least one form of identification. Both documents are recommended for faster processing.
+            <CheckCircle className="h-4 w-4 text-primary" />
+            <AlertDescription className="text-sm">
+              Your information is secure and will only be used for prize verification purposes.
             </AlertDescription>
           </Alert>
 
-          {/* Face Photo Upload */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <Camera className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-              <Label className="text-sm md:text-base font-semibold">Face Photo</Label>
-            </div>
-            <p className="text-xs md:text-sm text-muted-foreground">
-              Upload a clear photo of your face. Ensure good lighting and that your face is clearly visible.
-            </p>
-            
-            {facePhotoPreview ? (
-              <div className="relative">
-                <img 
-                  src={facePhotoPreview} 
-                  alt="Face preview" 
-                  className="w-full h-48 md:h-64 object-cover rounded-lg border-2 border-primary/30"
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+            {/* Face Photo Upload */}
+            <div className="space-y-3">
+              <Label className="text-sm md:text-base font-semibold flex items-center gap-2">
+                <Camera className="h-4 w-4 text-primary" />
+                Face Photo
+              </Label>
+              <div className="space-y-2">
+                {!facePhotoPreview ? (
+                  <div
+                    onClick={() => facePhotoInputRef.current?.click()}
+                    className="border-2 border-dashed border-border hover:border-primary/50 rounded-lg p-6 md:p-8 text-center cursor-pointer transition-all hover:bg-muted/30"
+                  >
+                    <Upload className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 text-muted-foreground" />
+                    <p className="text-xs md:text-sm text-muted-foreground">
+                      Click to upload
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Clear photo of your face
+                    </p>
+                  </div>
+                ) : (
+                  <div className="relative rounded-lg overflow-hidden border border-border">
+                    <img
+                      src={facePhotoPreview}
+                      alt="Face preview"
+                      className="w-full h-48 object-cover"
+                    />
+                    <button
+                      onClick={() => handleRemove('face')}
+                      className="absolute top-2 right-2 p-1.5 bg-destructive text-destructive-foreground rounded-full hover:bg-destructive/90 transition-colors"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
+                <input
+                  ref={facePhotoInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleFileChange(e, 'face')}
+                  className="hidden"
                 />
-                <Button
-                  type="button"
-                  variant="destructive"
-                  size="icon"
-                  className="absolute top-2 right-2 h-8 w-8"
-                  onClick={() => removeFile('face')}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-                <div className="absolute bottom-2 left-2 bg-background/90 px-2 py-1 rounded-full text-xs font-medium">
-                  {facePhoto?.name}
-                </div>
               </div>
-            ) : (
-              <div
-                onClick={() => facePhotoInputRef.current?.click()}
-                className="border-2 border-dashed border-primary/30 rounded-lg p-6 md:p-8 text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-all"
-              >
-                <Upload className="h-10 w-10 md:h-12 md:w-12 mx-auto mb-2 text-primary/70" />
-                <p className="text-xs md:text-sm font-medium mb-1">Click to upload face photo</p>
-                <p className="text-xs text-muted-foreground">PNG, JPG up to 5MB</p>
+            </div>
+
+            {/* ID Card Upload */}
+            <div className="space-y-3">
+              <Label className="text-sm md:text-base font-semibold flex items-center gap-2">
+                <CreditCard className="h-4 w-4 text-primary" />
+                ID Document
+              </Label>
+              <div className="space-y-2">
+                {!idCardPreview ? (
+                  <div
+                    onClick={() => idCardInputRef.current?.click()}
+                    className="border-2 border-dashed border-border hover:border-primary/50 rounded-lg p-6 md:p-8 text-center cursor-pointer transition-all hover:bg-muted/30"
+                  >
+                    <Upload className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 text-muted-foreground" />
+                    <p className="text-xs md:text-sm text-muted-foreground">
+                      Click to upload
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Government-issued ID
+                    </p>
+                  </div>
+                ) : (
+                  <div className="relative rounded-lg overflow-hidden border border-border">
+                    <img
+                      src={idCardPreview}
+                      alt="ID preview"
+                      className="w-full h-48 object-cover"
+                    />
+                    <button
+                      onClick={() => handleRemove('id')}
+                      className="absolute top-2 right-2 p-1.5 bg-destructive text-destructive-foreground rounded-full hover:bg-destructive/90 transition-colors"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
+                <input
+                  ref={idCardInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleFileChange(e, 'id')}
+                  className="hidden"
+                />
               </div>
-            )}
-            <input
-              ref={facePhotoInputRef}
-              type="file"
-              accept="image/*"
-              onChange={(e) => handleFileChange(e, 'face')}
-              className="hidden"
-            />
+            </div>
           </div>
 
-          {/* ID Card Upload */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <CreditCard className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-              <Label className="text-sm md:text-base font-semibold">ID Card / Government ID</Label>
-            </div>
-            <p className="text-xs md:text-sm text-muted-foreground">
-              Upload a photo of your government-issued ID (passport, driver's license, national ID card).
-            </p>
-            
-            {idCardPreview ? (
-              <div className="relative">
-                <img 
-                  src={idCardPreview} 
-                  alt="ID card preview" 
-                  className="w-full h-48 md:h-64 object-cover rounded-lg border-2 border-primary/30"
-                />
-                <Button
-                  type="button"
-                  variant="destructive"
-                  size="icon"
-                  className="absolute top-2 right-2 h-8 w-8"
-                  onClick={() => removeFile('id')}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-                <div className="absolute bottom-2 left-2 bg-background/90 px-2 py-1 rounded-full text-xs font-medium">
-                  {idCard?.name}
-                </div>
-              </div>
-            ) : (
-              <div
-                onClick={() => idCardInputRef.current?.click()}
-                className="border-2 border-dashed border-primary/30 rounded-lg p-6 md:p-8 text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-all"
-              >
-                <Upload className="h-10 w-10 md:h-12 md:w-12 mx-auto mb-2 text-primary/70" />
-                <p className="text-xs md:text-sm font-medium mb-1">Click to upload ID card</p>
-                <p className="text-xs text-muted-foreground">PNG, JPG up to 5MB</p>
-              </div>
-            )}
-            <input
-              ref={idCardInputRef}
-              type="file"
-              accept="image/*"
-              onChange={(e) => handleFileChange(e, 'id')}
-              className="hidden"
-            />
+          <div className="p-3 md:p-4 bg-muted/30 border border-border rounded-lg">
+            <h3 className="font-semibold mb-2 text-xs md:text-sm">Document Requirements:</h3>
+            <ul className="space-y-1 text-xs md:text-sm text-muted-foreground">
+              <li className="flex items-center gap-2">
+                <span className="text-primary font-bold">•</span> Clear, well-lit photos
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-primary font-bold">•</span> All text must be readable
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-primary font-bold">•</span> Valid government-issued ID (passport, driver's license, etc.)
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-primary font-bold">•</span> Maximum file size: 5MB per image
+              </li>
+            </ul>
           </div>
 
           {error && (
             <Alert variant="destructive" className="border-destructive/50">
               <AlertCircle className="h-4 w-4" />
-              <AlertDescription className="text-sm">{error}</AlertDescription>
-            </Alert>
-          )}
-
-          {canSubmit && (
-            <Alert className="border-primary/40 bg-primary/5">
-              <CheckCircle className="h-4 w-4 text-primary" />
-              <AlertDescription className="text-xs md:text-sm">
-                Documents ready for submission. Your identity will be reviewed within 3-5 business days.
-              </AlertDescription>
+              <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
 
           <Button 
             onClick={handleSubmit}
-            className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-sm hover:shadow-glow-md transition-all"
-            disabled={!canSubmit}
+            className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-premium-sm hover:shadow-premium-md transition-all"
+            disabled={!canSubmit || isSubmitting}
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Identity Documents'}
+            {isSubmitting ? 'Submitting...' : 'Submit Documents'}
           </Button>
         </CardContent>
       </Card>

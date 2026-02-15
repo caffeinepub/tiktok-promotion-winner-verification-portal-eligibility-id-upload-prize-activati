@@ -1,68 +1,72 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T23:34:04.968Z",
+  "generatedAt": "2026-02-15T23:42:10.158Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 5,
+    "implemented": 5,
     "items": [
       {
-        "id": "REQ-30",
-        "summary": "Restyle the app with a TikTok-like visual theme and format while keeping the existing winner verification flow unchanged (lookup → activation → eligibility → identity upload → receipt → completion). The new look should be predominantly dark, high-contrast, and modern, with neon accent highlights (e.g., cyan and hot pink), bold display typography, and a mobile-first layout aesthetic reminiscent of TikTok UI patterns (clean dark surfaces, punchy accent CTAs, subtle glow accents, tight spacing, rounded UI).",
+        "id": "REQ-1",
+        "summary": "Rebrand the UI from the current TikTok/neon styling to a cohesive “Prize Portal” brand across all screens while keeping the existing flow unchanged (lookup → activation → eligibility → identity upload → receipt → completion).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/App.tsx",
           "frontend/src/components/PrizeLookup.tsx",
           "frontend/src/components/ActivationFlow.tsx",
           "frontend/src/components/EligibilityFlow.tsx",
           "frontend/src/components/IdentityVerification.tsx",
           "frontend/src/components/ReceiptMethod.tsx",
           "frontend/src/components/CompletionScreen.tsx",
-          "frontend/tailwind.config.js"
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/App.tsx",
           "frontend/src/components/PrizeLookup.tsx",
           "frontend/src/components/ActivationFlow.tsx",
           "frontend/src/components/EligibilityFlow.tsx",
           "frontend/src/components/IdentityVerification.tsx",
           "frontend/src/components/ReceiptMethod.tsx",
           "frontend/src/components/CompletionScreen.tsx",
-          "frontend/tailwind.config.js"
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx"
         ]
       },
       {
-        "id": "REQ-31",
-        "summary": "Update the app shell (Header/Footer) and page layout to better match a TikTok-like format: use a darker header/footer treatment, tighten vertical spacing, and apply subtle neon accent cues (e.g., active icon/color highlights, thin accent dividers, or soft glow shadows) while preserving existing text content and links.",
+        "id": "REQ-2",
+        "summary": "Update user-facing text to use “Prize Portal” branding (e.g., header title, footer copyright line, hero/alt text, button/step labels where appropriate) and ensure all user-facing text is in English.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/components/Header.tsx",
           "frontend/src/components/Footer.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/components/PrizeLookup.tsx",
+          "frontend/src/components/ActivationFlow.tsx",
+          "frontend/src/components/ReceiptMethod.tsx",
+          "frontend/src/components/CompletionScreen.tsx"
         ],
         "matchedFiles": [
           "frontend/src/components/Header.tsx",
           "frontend/src/components/Footer.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/components/PrizeLookup.tsx",
+          "frontend/src/components/ActivationFlow.tsx",
+          "frontend/src/components/ReceiptMethod.tsx",
+          "frontend/src/components/CompletionScreen.tsx"
         ]
       },
       {
-        "id": "REQ-32",
-        "summary": "Update existing generated brand images to visually match the TikTok-like dark/neon theme and update the UI to reference the updated assets.",
+        "id": "REQ-3",
+        "summary": "Replace TikTok-themed generated image references in the UI with Prize Portal-branded generated assets, and ensure the app loads the new assets from frontend/public/assets/generated.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png",
-          "frontend/public/assets/generated/logo-tiktok.dim_512x512.png",
-          "frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png",
-          "frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png",
-          "frontend/public/assets/generated/verification-badge-neon.dim_100x100.png",
-          "frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png",
+          "frontend/public/assets/generated/logo-prize-portal.dim_512x512.png",
+          "frontend/public/assets/generated/trophy-icon-prize.dim_200x200.png",
+          "frontend/public/assets/generated/hero-cover-prize-portal.dim_1600x600.png",
+          "frontend/public/assets/generated/verification-badge-prize.dim_100x100.png",
+          "frontend/public/assets/generated/face-verify-icon-prize.dim_150x150.png",
+          "frontend/public/assets/generated/celebration-bg-prize.dim_1200x800.png",
           "frontend/src/components/Header.tsx",
           "frontend/src/components/PrizeLookup.tsx",
           "frontend/src/components/ActivationFlow.tsx",
@@ -70,33 +74,60 @@
           "frontend/src/components/CompletionScreen.tsx"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png",
-          "frontend/public/assets/generated/logo-tiktok.dim_512x512.png",
-          "frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png",
-          "frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png",
-          "frontend/public/assets/generated/verification-badge-neon.dim_100x100.png",
-          "frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png",
+          "frontend/public/assets/generated/logo-prize-portal.dim_512x512.png",
+          "frontend/public/assets/generated/trophy-icon-prize.dim_200x200.png",
+          "frontend/public/assets/generated/hero-cover-prize-portal.dim_1600x600.png",
+          "frontend/public/assets/generated/verification-badge-prize.dim_100x100.png",
+          "frontend/public/assets/generated/face-verify-icon-prize.dim_150x150.png",
+          "frontend/public/assets/generated/celebration-bg-prize.dim_1200x800.png",
           "frontend/src/components/Header.tsx",
           "frontend/src/components/PrizeLookup.tsx",
           "frontend/src/components/ActivationFlow.tsx",
           "frontend/src/components/IdentityVerification.tsx",
           "frontend/src/components/CompletionScreen.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Define and apply a distinct visual theme for Prize Portal (colors, typography, surfaces, and component styling) that is consistent across the app and is not TikTok-like/neon. Avoid a blue/purple primary palette.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Remove/replace promotion-specific eligibility copy that references TikTok so the eligibility checklist is generic to a Prize Portal (without changing the checklist interaction behavior).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/EligibilityFlow.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/EligibilityFlow.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png",
-    "frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png",
-    "frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png",
-    "frontend/public/assets/generated/logo-tiktok.dim_512x512.png",
-    "frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png",
-    "frontend/public/assets/generated/verification-badge-neon.dim_100x100.png",
+    "frontend/public/assets/generated/celebration-bg-prize.dim_1200x800.png",
+    "frontend/public/assets/generated/face-verify-icon-prize.dim_150x150.png",
+    "frontend/public/assets/generated/hero-cover-prize-portal.dim_1600x600.png",
+    "frontend/public/assets/generated/logo-prize-portal.dim_512x512.png",
+    "frontend/public/assets/generated/trophy-icon-prize.dim_200x200.png",
+    "frontend/public/assets/generated/verification-badge-prize.dim_100x100.png",
     "frontend/src/App.tsx",
     "frontend/src/components/ActivationFlow.tsx",
     "frontend/src/components/CompletionScreen.tsx",

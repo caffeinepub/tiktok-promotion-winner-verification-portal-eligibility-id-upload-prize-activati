@@ -74,13 +74,13 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                'glow-sm': '0 0 10px oklch(var(--primary) / 0.2)',
-                'glow-md': '0 0 20px oklch(var(--primary) / 0.3)',
-                'glow-lg': '0 0 30px oklch(var(--primary) / 0.4)'
+                'premium-sm': '0 2px 6px oklch(var(--primary) / 0.12)',
+                'premium-md': '0 4px 12px oklch(var(--primary) / 0.15)',
+                'premium-lg': '0 8px 24px oklch(var(--primary) / 0.18)'
             },
             fontFamily: {
-                sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-                display: ['Poppins', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+                sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                display: ['Playfair Display', 'Georgia', 'serif']
             },
             keyframes: {
                 'accordion-down': {
@@ -91,15 +91,15 @@ export default {
                     from: { height: 'var(--radix-accordion-content-height)' },
                     to: { height: '0' }
                 },
-                'pulse-glow': {
-                    '0%, 100%': { boxShadow: '0 0 15px oklch(var(--primary) / 0.3)' },
-                    '50%': { boxShadow: '0 0 25px oklch(var(--primary) / 0.5)' }
+                'subtle-pulse': {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.85' }
                 }
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
-                'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
+                'subtle-pulse': 'subtle-pulse 2s ease-in-out infinite'
             }
         }
     },

@@ -1,153 +1,210 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "TikTok-like dark/neon restyle (UI-only) for winner verification flow",
+  "title": "Prize Portal rebrand (UI, copy, theme, and generated assets)",
   "requirements": [
     {
-      "id": "REQ-30",
-      "summary": "Apply a TikTok-like dark, high-contrast, neon-accent, mobile-first visual theme across the existing verification flow without changing flow logic.",
+      "id": "REQ-1",
+      "summary": "Rebrand all existing flow screens to a cohesive Prize Portal look without changing the step flow behavior.",
       "acceptanceCriteria": [
-        "Global theme tokens in frontend/src/index.css are updated to a dark, TikTok-like palette (dark background/card, high-contrast foreground, neon accent primary/secondary) without breaking Tailwind/shadcn token usage.",
-        "All existing screens (PrizeLookup, ActivationFlow, EligibilityFlow, IdentityVerification, ReceiptMethod, CompletionScreen) visually match the new theme: buttons, alerts, cards, inputs, icons, borders, and muted text are consistent and readable on dark backgrounds.",
-        "The overall layout feels more mobile-first: content widths, spacing, and component sizing are adjusted to look good on small screens while remaining responsive on desktop.",
-        "No changes introduce new business logic or new steps in the flow; only presentation/styling/layout changes are made."
+        "The user journey and step transitions remain identical to current behavior.",
+        "No UI copy or assets reference TikTok or “Winner Verification Portal”.",
+        "All core screens (PrizeLookup, ActivationFlow, EligibilityFlow, IdentityVerification, ReceiptMethod, CompletionScreen) visually match the new Prize Portal brand."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PrizeLookup.tsx",
+          "operation": "modify",
+          "description": "Update PrizeLookup visual styling (non-neon look) while keeping form submission and transitions unchanged; continue using shadcn/ui Card, Button, Input, Alert for consistent UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ActivationFlow.tsx",
+          "operation": "modify",
+          "description": "Update Activation screen styling to match Prize Portal theme (surfaces, borders, shadows, emphasis) without changing activation behavior; continue using shadcn/ui Card, Button, Alert. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/EligibilityFlow.tsx",
+          "operation": "modify",
+          "description": "Update Eligibility screen styling to match Prize Portal theme without changing checklist interaction or submission behavior; continue using shadcn/ui Card, Checkbox, Button, Alert. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/IdentityVerification.tsx",
+          "operation": "modify",
+          "description": "Update Identity Verification screen styling to match Prize Portal theme (upload panels, borders, highlights) while keeping upload/preview/remove/submit behavior unchanged; continue using shadcn/ui Card, Button, Alert, Label. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ReceiptMethod.tsx",
+          "operation": "modify",
+          "description": "Update Receipt/Delivery screen styling to match Prize Portal theme while keeping form validation and submission behavior unchanged; continue using shadcn/ui Card, RadioGroup, Input, Textarea, Button, Alert. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/CompletionScreen.tsx",
+          "operation": "modify",
+          "description": "Update Completion screen styling to match Prize Portal theme (success/ineligible/review states) while keeping reset behavior unchanged; continue using shadcn/ui Card, Button, Alert. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update header styling (background, borders, typography) to match Prize Portal theme without changing layout structure; continue using existing iconography and shadcn/tailwind utilities. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update footer styling to match Prize Portal theme without changing existing referral link behavior; continue using tailwind utilities. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Update all user-facing text to Prize Portal branding and ensure consistent English copy across the app.",
+      "acceptanceCriteria": [
+        "Header title no longer says “Winner Verification Portal” and instead reflects Prize Portal branding.",
+        "Footer copyright line no longer says “Winner Verification Portal”.",
+        "All user-facing text remains English and consistent in tone with a Prize Portal."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Replace 'Winner Verification Portal' title with 'Prize Portal' (or 'Prize Portal — Verification') and update logo alt text to Prize Portal wording. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Replace footer copyright text to reference Prize Portal (remove 'Winner Verification Portal') while keeping the existing referral link and hostname behavior unchanged. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/PrizeLookup.tsx",
+          "operation": "modify",
+          "description": "Update PrizeLookup hero/title/description/button text to Prize Portal tone (e.g., 'Verify Your Prize') and ensure all visible strings remain English. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ActivationFlow.tsx",
+          "operation": "modify",
+          "description": "Review and adjust activation step labels and helper text for Prize Portal tone while preserving meaning and flow. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ReceiptMethod.tsx",
+          "operation": "modify",
+          "description": "Review and adjust delivery method labels/descriptions to consistent Prize Portal English tone while preserving validation rules and behavior. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/CompletionScreen.tsx",
+          "operation": "modify",
+          "description": "Review and adjust completion-state messaging (claimed/under review/ineligible) to match Prize Portal tone while preserving state logic and actions. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Replace TikTok/neon generated image references with Prize Portal generated assets loaded from frontend/public/assets/generated.",
+      "acceptanceCriteria": [
+        "Header logo no longer uses /assets/generated/logo-tiktok.dim_512x512.png.",
+        "PrizeLookup hero image no longer uses /assets/generated/hero-cover-tiktok.dim_1600x600.png.",
+        "Icons/backgrounds no longer use TikTok/neon asset filenames (e.g., trophy-icon-neon, verification-badge-neon, face-verify-icon-neon, celebration-bg-tiktok).",
+        "All referenced generated assets exist under frontend/public/assets/generated and render correctly in the UI."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/logo-prize-portal.dim_512x512.png",
+          "operation": "create",
+          "description": "Add generated Prize Portal logo mark asset (transparent background) at frontend/public/assets/generated/logo-prize-portal.dim_512x512.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/trophy-icon-prize.dim_200x200.png",
+          "operation": "create",
+          "description": "Add generated premium/gold trophy icon asset (transparent background) at frontend/public/assets/generated/trophy-icon-prize.dim_200x200.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/hero-cover-prize-portal.dim_1600x600.png",
+          "operation": "create",
+          "description": "Add generated Prize Portal hero cover background asset at frontend/public/assets/generated/hero-cover-prize-portal.dim_1600x600.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/verification-badge-prize.dim_100x100.png",
+          "operation": "create",
+          "description": "Add generated premium verification badge icon (transparent background) at frontend/public/assets/generated/verification-badge-prize.dim_100x100.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/face-verify-icon-prize.dim_150x150.png",
+          "operation": "create",
+          "description": "Add generated premium face/ID verification icon (transparent background) at frontend/public/assets/generated/face-verify-icon-prize.dim_150x150.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/celebration-bg-prize.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated premium celebration background (confetti/spotlight) at frontend/public/assets/generated/celebration-bg-prize.dim_1200x800.png."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update header logo image reference from /assets/generated/logo-tiktok.dim_512x512.png to frontend/public/assets/generated/logo-prize-portal.dim_512x512.png and adjust alt text accordingly. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/PrizeLookup.tsx",
+          "operation": "modify",
+          "description": "Replace hero and trophy image references with frontend/public/assets/generated/hero-cover-prize-portal.dim_1600x600.png and frontend/public/assets/generated/trophy-icon-prize.dim_200x200.png; update relevant alt text. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ActivationFlow.tsx",
+          "operation": "modify",
+          "description": "Replace verification badge image reference with frontend/public/assets/generated/verification-badge-prize.dim_100x100.png and update alt text. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/IdentityVerification.tsx",
+          "operation": "modify",
+          "description": "Replace face verification icon image reference with frontend/public/assets/generated/face-verify-icon-prize.dim_150x150.png and update alt text. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/CompletionScreen.tsx",
+          "operation": "modify",
+          "description": "Replace celebration background image reference from /assets/generated/celebration-bg-tiktok.dim_1200x800.png to frontend/public/assets/generated/celebration-bg-prize.dim_1200x800.png and update alt text. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Define and apply a Prize Portal visual theme (tokens + styling) that is consistent, not neon/TikTok-like, and avoids a blue/purple primary palette.",
+      "acceptanceCriteria": [
+        "Global theme tokens (CSS variables) and common utilities reflect the new Prize Portal theme.",
+        "Key components (cards, buttons, alerts, headers/footers) use the new theme consistently.",
+        "The primary palette is not blue/purple and the overall look is not neon/TikTok-inspired."
       ],
       "file_operations": [
         {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Update shadcn/Tailwind CSS variables (background/card/foreground/muted/border/input/ring/primary/secondary/accent) to a predominantly dark, high-contrast palette with neon accents (cyan + hot pink) and subtle glow-friendly ring values; optionally add small utility classes (e.g., glow shadow helpers) in Tailwind layers to support consistent TikTok-like styling without editing shadcn ui components."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Tighten main layout spacing for a mobile-first feel (smaller default vertical padding, better small-screen spacing) while keeping the existing step transition logic and component rendering order unchanged."
-        },
-        {
-          "path": "frontend/src/components/PrizeLookup.tsx",
-          "operation": "modify",
-          "description": "Adjust presentation only: apply dark-surface + neon accent CTA styling via utility classes (no logic changes), refine spacing/typography for mobile-first (tighter gaps, bold display typography), and ensure card/hero presentation reads well on dark backgrounds."
-        },
-        {
-          "path": "frontend/src/components/ActivationFlow.tsx",
-          "operation": "modify",
-          "description": "Adjust presentation only: refine card/alert sections and call-to-action emphasis to match the dark/neon theme (glow accents, higher contrast borders, tighter spacing) while preserving all existing activation flow behavior."
-        },
-        {
-          "path": "frontend/src/components/EligibilityFlow.tsx",
-          "operation": "modify",
-          "description": "Adjust presentation only: update checklist item containers (borders/hover states), headings, and button emphasis for dark/neon readability and a TikTok-like compact mobile layout; do not change requirement text or eligibility logic."
-        },
-        {
-          "path": "frontend/src/components/IdentityVerification.tsx",
-          "operation": "modify",
-          "description": "Adjust presentation only: update upload dropzones/previews/buttons to dark-surface styling with neon focus/hover states and subtle glow cues; keep all validation and submission behavior unchanged."
-        },
-        {
-          "path": "frontend/src/components/ReceiptMethod.tsx",
-          "operation": "modify",
-          "description": "Adjust presentation only: restyle radio cards, form fields, and section spacing for mobile-first dark/neon consistency; preserve existing validation and submission behavior."
-        },
-        {
-          "path": "frontend/src/components/CompletionScreen.tsx",
-          "operation": "modify",
-          "description": "Adjust presentation only: ensure status visuals (ineligible/under review/claimed) render with consistent dark/neon styling, readable text colors, and modern spacing; do not change completion logic."
+          "description": "Replace TikTok/neon CSS variable tokens with a Prize Portal palette (e.g., premium gold/amber primary, neutral charcoal surfaces, subtle accent) for both :root and .dark; remove or repurpose neon glow utility classes so they no longer read as neon/TikTok-inspired."
         },
         {
           "path": "frontend/tailwind.config.js",
           "operation": "modify",
-          "description": "Refine Tailwind theme extensions (e.g., ensure display typography is available/used consistently and support any needed theme-level shadow/animation tokens) to reinforce the TikTok-like look while still relying on existing shadcn token variables."
-        }
-      ]
-    },
-    {
-      "id": "REQ-31",
-      "summary": "Restyle the app shell (Header/Footer) and overall page layout to a darker TikTok-like format with subtle neon accent cues while preserving existing content and links.",
-      "acceptanceCriteria": [
-        "Header (frontend/src/components/Header.tsx) and Footer (frontend/src/components/Footer.tsx) adopt the new dark/neon styling while keeping the same content, logo rendering, and the caffeine.ai attribution link intact.",
-        "App layout in frontend/src/App.tsx remains functional, but visually aligns with the new theme (background, container padding, and section spacing updated consistently)."
-      ],
-      "file_operations": [
+          "description": "Adjust extended Tailwind theme values (e.g., boxShadow glow definitions, animations, and optional font configuration) to align with Prize Portal (subtle premium shadows, no neon glow emphasis) while keeping existing token mapping to CSS variables."
+        },
         {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Update header styling to a darker TikTok-like treatment (high-contrast surface, thin accent divider, subtle neon highlight/glow on active brand/icon) while preserving the same text content, logo rendering, and overall structure. Verify the component's usage instructions before implementing."
+          "description": "Align header surface styling with the updated Prize Portal tokens (subtle borders, solid/blur surfaces if desired) using existing Tailwind utilities and shadcn/ui patterns. Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update footer styling to match the dark/neon theme (muted text on dark surface, subtle accent divider, refined spacing) while keeping the copyright text and caffeine.ai attribution link intact and unchanged. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Align app shell background/container spacing with the updated header/footer styling (mobile-first padding and section spacing), without changing the verification flow steps or behavior."
+          "description": "Align footer surface styling with the updated Prize Portal tokens (subtle borders, consistent muted text styling) using existing Tailwind utilities. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
-      "id": "REQ-32",
-      "summary": "Replace existing generated brand images with TikTok-like dark/neon versions and update the UI to reference the updated static assets.",
+      "id": "REQ-5",
+      "summary": "Remove/replace TikTok-specific eligibility checklist copy with generic Prize Portal eligibility language without changing checklist behavior.",
       "acceptanceCriteria": [
-        "Updated image assets are placed under frontend/public/assets/generated and referenced by the existing components that render them (e.g., Header and PrizeLookup).",
-        "All updated images remain crisp and legible on dark backgrounds and match the neon-accent style.",
-        "No images are served via the backend; all images are loaded as static assets from /assets/generated/ paths."
+        "Eligibility checklist items no longer mention TikTok.",
+        "Checklist still requires confirming all items before proceeding, as it does today."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png",
-          "operation": "create",
-          "description": "Add updated TikTok-like dark/neon hero cover image as a static asset at frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/logo-tiktok.dim_512x512.png",
-          "operation": "create",
-          "description": "Add updated TikTok-like dark/neon logo mark as a static asset at frontend/public/assets/generated/logo-tiktok.dim_512x512.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png",
-          "operation": "create",
-          "description": "Add updated TikTok-like neon trophy icon (transparent background) as a static asset at frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png",
-          "operation": "create",
-          "description": "Add updated TikTok-like neon face verification icon (transparent background) as a static asset at frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/verification-badge-neon.dim_100x100.png",
-          "operation": "create",
-          "description": "Add updated TikTok-like neon verification badge (transparent background) as a static asset at frontend/public/assets/generated/verification-badge-neon.dim_100x100.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png",
-          "operation": "create",
-          "description": "Add updated TikTok-like dark/neon celebration background with confetti/glow accents as a static asset at frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png."
-        },
-        {
-          "path": "frontend/src/components/Header.tsx",
+          "path": "frontend/src/components/EligibilityFlow.tsx",
           "operation": "modify",
-          "description": "Update the header to reference the new logo asset at frontend/public/assets/generated/logo-tiktok.dim_512x512.png (static asset usage only). Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/PrizeLookup.tsx",
-          "operation": "modify",
-          "description": "Update PrizeLookup to reference frontend/public/assets/generated/hero-cover-tiktok.dim_1600x600.png and frontend/public/assets/generated/trophy-icon-neon.dim_200x200.png. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/ActivationFlow.tsx",
-          "operation": "modify",
-          "description": "Update ActivationFlow to reference frontend/public/assets/generated/verification-badge-neon.dim_100x100.png. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/IdentityVerification.tsx",
-          "operation": "modify",
-          "description": "Update IdentityVerification to reference frontend/public/assets/generated/face-verify-icon-neon.dim_150x150.png. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/CompletionScreen.tsx",
-          "operation": "modify",
-          "description": "Update CompletionScreen to reference frontend/public/assets/generated/celebration-bg-tiktok.dim_1200x800.png for the claimed state. Verify the component's usage instructions before implementing."
+          "description": "Edit the eligibilityRequirements strings to remove 'TikTok promotion' references and replace with generic Prize Portal eligibility statements; do not change checklist state handling, allChecked logic, or button enable/disable behavior. Verify the component's usage instructions before implementing."
         }
       ]
     }

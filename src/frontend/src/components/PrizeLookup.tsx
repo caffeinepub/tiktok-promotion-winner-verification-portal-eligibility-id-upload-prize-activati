@@ -43,25 +43,25 @@ export default function PrizeLookup({ onSuccess }: PrizeLookupProps) {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="mb-6 md:mb-8 overflow-hidden rounded-xl">
+      <div className="mb-6 md:mb-8 overflow-hidden rounded-lg shadow-md">
         <img 
-          src="/assets/generated/hero-cover-tiktok.dim_1600x600.png" 
-          alt="Winner Verification" 
+          src="/assets/generated/hero-cover-prize-portal.dim_1600x600.png" 
+          alt="Prize Portal Hero" 
           className="w-full h-40 md:h-56 object-cover"
         />
       </div>
 
-      <Card className="border-primary/20 shadow-glow-md bg-card/95 backdrop-blur">
+      <Card className="border-border shadow-premium-md bg-card">
         <CardHeader className="text-center space-y-3 pb-4">
           <div className="flex justify-center mb-1">
             <img 
-              src="/assets/generated/trophy-icon-neon.dim_200x200.png" 
-              alt="Trophy" 
+              src="/assets/generated/trophy-icon-prize.dim_200x200.png" 
+              alt="Prize Trophy" 
               className="h-14 w-14 md:h-16 md:w-16"
             />
           </div>
           <CardTitle className="text-xl md:text-2xl lg:text-3xl font-display font-bold tracking-tight">
-            Verify Your Winning
+            Verify Your Prize
           </CardTitle>
           <CardDescription className="text-sm md:text-base text-muted-foreground">
             Enter your prize number to begin the verification process
@@ -79,7 +79,7 @@ export default function PrizeLookup({ onSuccess }: PrizeLookupProps) {
                 placeholder="Enter your prize number (e.g., WIN-2026-12345)"
                 value={prizeNumber}
                 onChange={(e) => setPrizeNumber(e.target.value)}
-                className="h-11 md:h-12 text-sm md:text-base bg-background/50 border-primary/30 focus:border-primary focus:ring-primary/50"
+                className="h-11 md:h-12 text-sm md:text-base bg-background border-input focus:border-primary focus:ring-primary/30"
                 disabled={isLoading}
               />
               <p className="text-xs md:text-sm text-muted-foreground">
@@ -96,7 +96,7 @@ export default function PrizeLookup({ onSuccess }: PrizeLookupProps) {
 
             <Button 
               type="submit" 
-              className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-sm hover:shadow-glow-md transition-all"
+              className="w-full h-11 md:h-12 text-sm md:text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-premium-sm hover:shadow-premium-md transition-all"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -110,20 +110,20 @@ export default function PrizeLookup({ onSuccess }: PrizeLookupProps) {
             </Button>
           </form>
 
-          <div className="mt-6 p-3 md:p-4 bg-muted/30 border border-primary/10 rounded-lg">
+          <div className="mt-6 p-3 md:p-4 bg-muted/50 border border-border rounded-lg">
             <h3 className="font-semibold mb-2 text-xs md:text-sm">What happens next?</h3>
             <ul className="space-y-1 text-xs md:text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
-                <span className="text-primary">•</span> Activate your prize number
+                <span className="text-primary font-bold">•</span> Activate your prize number
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-primary">•</span> Complete eligibility verification
+                <span className="text-primary font-bold">•</span> Complete eligibility verification
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-primary">•</span> Submit identity documents
+                <span className="text-primary font-bold">•</span> Submit identity documents
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-primary">•</span> Choose your prize delivery method
+                <span className="text-primary font-bold">•</span> Choose your prize delivery method
               </li>
             </ul>
           </div>

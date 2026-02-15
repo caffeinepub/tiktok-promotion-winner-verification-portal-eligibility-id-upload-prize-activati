@@ -1,13 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Restyle the existing winner verification app UI to a TikTok-like dark, high-contrast, neon-accent aesthetic while keeping the current verification flow and behavior unchanged.
+**Goal:** Rebrand the existing app UI into a cohesive “Prize Portal” experience while keeping the current user flow unchanged.
 
 **Planned changes:**
-- Update global theme tokens (colors/typography/surfaces) in `frontend/src/index.css` to a dark palette with neon accent highlights that works with existing Tailwind/shadcn token usage.
-- Restyle all existing flow screens (PrizeLookup → ActivationFlow → EligibilityFlow → IdentityVerification → ReceiptMethod → CompletionScreen) for consistent dark-mode readability: buttons, cards, inputs, borders, alerts, muted text, and icon treatments.
-- Adjust layout spacing and component sizing to feel more mobile-first (tight spacing, rounded UI, responsive widths) while remaining usable on desktop.
-- Update the app shell (Header/Footer) and overall page layout styling (background, padding, subtle neon cues) without changing existing content, links, or attribution.
-- Replace existing generated image assets with TikTok-like dark/neon variants and update UI references to use the new asset filenames under `/assets/generated/`.
+- Update global visual styling (theme tokens, colors, typography, surfaces, component styling) to a distinct Prize Portal look that is not neon/TikTok-like and does not use a blue/purple primary palette.
+- Replace all TikTok/Winner Verification Portal references in UI copy with Prize Portal branding and ensure all user-facing text is English.
+- Swap TikTok/neon generated asset references (logo, hero, icons, backgrounds) to Prize Portal-branded generated assets loaded from `frontend/public/assets/generated`.
+- Update eligibility checklist copy to remove TikTok-specific promotional references while keeping checklist interaction behavior the same.
+- Ensure all core screens (PrizeLookup, ActivationFlow, EligibilityFlow, IdentityVerification, ReceiptMethod, CompletionScreen) match the new Prize Portal brand without changing step order or transitions.
 
-**User-visible outcome:** The app looks and feels like a modern TikTok-style dark/neon mobile-first interface, while the winner verification process and steps remain exactly the same.
+**User-visible outcome:** The app looks and reads like a Prize Portal across all screens (with updated branding, theme, and assets), while users complete the same exact lookup → activation → eligibility → identity upload → receipt → completion journey as before.

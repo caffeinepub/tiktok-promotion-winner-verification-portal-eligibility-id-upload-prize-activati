@@ -72,6 +72,13 @@ function App() {
     setCurrentStep('lookup');
   };
 
+  const getCompletionStatus = (): 'claimed' | 'under-review' | 'ineligible' => {
+    if (!prizeData) return 'under-review';
+    if (prizeData.status === 'claimed') return 'claimed';
+    if (prizeData.status === 'ineligible') return 'ineligible';
+    return 'under-review';
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
@@ -90,7 +97,11 @@ function App() {
           <ReceiptMethod prizeData={prizeData} onSubmit={handleReceiptSubmit} />
         )}
         {currentStep === 'complete' && prizeData && (
-          <CompletionScreen prizeData={prizeData} onReset={handleReset} />
+          <CompletionScreen 
+            prizeData={prizeData} 
+            status={getCompletionStatus()} 
+            onReset={handleReset} 
+          />
         )}
       </main>
       <Footer />
