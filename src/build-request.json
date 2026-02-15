@@ -1,0 +1,19 @@
+{
+  "kind": "build_request",
+  "title": "Deploy the application",
+  "priority": "normal",
+  "requirements": [],
+  "constraints": [
+    "Backend must remain a single Motoko actor (all logic in backend/main.mo when present).",
+    "Do not edit frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose instead).",
+    "Use English for any user-facing text."
+  ],
+  "nonGoals": [
+    "Adding new product features beyond fixing build/deploy blockers.",
+    "Introducing unsupported backend/frontend technologies or external databases/services."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "frontend/src/App.tsx": "Main application component managing the multi-step verification flow (lookup, activation, eligibility, identity, receipt, completion) with state management for prize data and current step.",
+  "frontend/src/components/Header.tsx": "Application header component displaying the logo, shield icon, and \"Winner Verification Portal\" title with responsive design.",
+  "frontend/src/components/Footer.tsx": "Footer component with copyright notice and \"Built with love using caffeine.ai\" attribution including proper UTM tracking parameters.",
+  "frontend/src/components/PrizeLookup.tsx": "Initial prize lookup screen where users enter their prize number to begin verification, featuring hero image, trophy icon, and form validation.",
+  "frontend/src/components/ActivationFlow.tsx": "Prize activation screen that allows one-time activation of a valid prize number with important information display and confirmation flow.",
+  "frontend/src/components/EligibilityFlow.tsx": "Eligibility verification screen with checkbox-based requirements confirmation (age, residency, participation, etc.) before proceeding to identity verification.",
+  "frontend/src/components/IdentityVerification.tsx": "Identity document upload interface supporting face photo and ID card uploads with image preview, file validation, and drag-and-drop functionality.",
+  "frontend/src/components/ReceiptMethod.tsx": "Prize delivery method selection screen with radio group for physical/digital delivery and conditional form fields for shipping address or contact information.",
+  "frontend/src/components/CompletionScreen.tsx": "Final status screen showing completion state (claimed, ineligible, or pending review) with appropriate messaging, timeline, and next steps.",
+  "frontend/src/index.css": "Global styles with OKLCH-based color system featuring purple/violet primary colors for a trustworthy verification aesthetic in both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom font families (Inter, Poppins), extended color tokens, and design system settings for consistent UI theming.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for backend integration (prize info, activation, eligibility, identity uploads, receipt method) with placeholder implementations ready for backend connection."
+}
